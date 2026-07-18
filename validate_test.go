@@ -40,13 +40,6 @@ func TestExtractBearerToken(t *testing.T) {
 }
 
 func TestNewValidator(t *testing.T) {
-	t.Run("audience required", func(t *testing.T) {
-		validator, err := NewValidator(Config{})
-		require.Error(t, err)
-		assert.Nil(t, validator)
-		assert.Contains(t, err.Error(), "audience is required")
-	})
-
 	t.Run("default issuers and allowlist enabled", func(t *testing.T) {
 		validator, err := NewValidator(Config{
 			Audience:               "https://service.example",

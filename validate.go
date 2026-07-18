@@ -60,10 +60,6 @@ type Validator struct {
 
 // NewValidator creates a validator with secure defaults.
 func NewValidator(config Config, opts ...Option) (*Validator, error) {
-	if strings.TrimSpace(config.Audience) == "" {
-		return nil, fmt.Errorf("audience is required")
-	}
-
 	issuers := config.AllowedIssuers
 	if len(issuers) == 0 {
 		issuers = []string{googleIssuerAccounts, googleIssuerHTTPS}
